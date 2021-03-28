@@ -23,20 +23,20 @@ public class Road extends JPanel implements ActionListener, Runnable {
 	
 	public static Audio a;	
 	
-	Timer timer = new Timer(20,this); // каждые 20мс запускать функцию actionPerformed(this)
+	Timer timer = new Timer(20,this); 
 	
 	Image img = new ImageIcon("res/doroga.png").getImage();
 	Player p = new Player();
 	
-	Thread enemiesFactory = new Thread(this); // новый поток, который будет выполняться параллельно
+	Thread enemiesFactory = new Thread(this); 
 	ArrayList <Enemy> enemies = new ArrayList<Enemy>();
 	 
 	public Road(){ 
 		 timer.start();
 		 enemiesFactory.start();
 		 a  = new Audio("res/bhump.wav", 0.8);
-		 addKeyListener(new MyKeyAddapter());//добавляется действия на клавитуру(слушатель клавиатуры)
-		 setFocusable(true);//чтобы кейивент отправлялся на панель если фокусабл
+		 addKeyListener(new MyKeyAddapter());
+		 setFocusable(true);
 		 
 	 }
 	
@@ -56,14 +56,14 @@ public class Road extends JPanel implements ActionListener, Runnable {
 				p.score = 0;
 			}
 			
-			p.keyPressed(e);//передаем управление методу из плэера 
+			p.keyPressed(e);
 		}
 		public void keyReleased(KeyEvent e) {
 			p.keyReleased(e);
 		}
 		
 	}
-	 public void paint(Graphics g) { // метод перерисовывает панель
+	 public void paint(Graphics g) { 
 		 g.drawImage(img, p.layer1, 0, 1100, 580, null); 
 		 g.drawImage(img, p.layer2, 0, 1100, 580, null);
 		 g.drawImage(p.img, p.x, p.y, 100,150, null);
@@ -96,7 +96,7 @@ public class Road extends JPanel implements ActionListener, Runnable {
 				g.drawString("You won !!!!", 200, HEIGHT / 2 - 50);
 			}
 
-		for (Enemy e : enemies) {//перебираем яблоки и их перерисовываем 
+		for (Enemy e : enemies) {
 			 e.move();
 			 g.drawImage(e.img, e.x, e.y, 40, 40, null);
 		}
@@ -104,7 +104,7 @@ public class Road extends JPanel implements ActionListener, Runnable {
 	 }
 	 
 	 public void actionPerformed(ActionEvent e){
-		 p.move();//плеер перемещается
+		 p.move();
 		 repaint();
 		 testWin();
 	 }
@@ -123,7 +123,7 @@ public class Road extends JPanel implements ActionListener, Runnable {
 		    p.s = 0;
 		}
 		
-		Iterator<Enemy> i = enemies.iterator();//сбор яблок
+		Iterator<Enemy> i = enemies.iterator();
 		 while(i.hasNext()) {
 			 Enemy e = i.next();
 			 if (p.getRect().intersects(e.getRect())) {
@@ -144,9 +144,9 @@ public class Road extends JPanel implements ActionListener, Runnable {
 		while(true) {
 			Random rand = new Random();
 			try {
-				Thread.sleep(rand.nextInt(2000));// спим
+				Thread.sleep(rand.nextInt(2000));// Г±ГЇГЁГ¬
 				if(p.v > 0) {
-				enemies.add(new Enemy(1100, rand.nextInt(500), this));// создаем врага
+				enemies.add(new Enemy(1100, rand.nextInt(500), this));
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();

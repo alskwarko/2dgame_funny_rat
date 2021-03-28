@@ -12,24 +12,24 @@ public class Player {
 	public static final int MAX_TOP = 10;
 	public static final int MAX_BOTTOM = 500;
 	
-	Image img = new ImageIcon("res/osn2.png").getImage();//загрузка картинки машинки
+	Image img = new ImageIcon("res/osn2.png").getImage();
 	
 	public int score = 0;
 	int v = 0;
-	int dv = 0; // ускорение
+	int dv = 0;
 	int s = 0; 
-	int x = 30; // нач координаты
+	int x = 30; 
 	int y = 100;
 	int dy = 0;
-	int layer1 = 0; // первый слой(дорога)
-	int layer2 = 1100;// второй слой(дорога) чтобы дорога не заканчивалась( выезжает дорога)
+	int layer1 = 0; 
+	int layer2 = 1100;
 	
 	public Rectangle getRect() {
 		return new Rectangle(x, y, 100,150);
 	}
 	
-	public void move() { // метод движения
-		s += v; // путь увеличивается
+	public void move() { 
+		s += v; 
 		v += dv;
 		if(v <= 0) v = 0;
 		if(v >= MAX_V) v = MAX_V;
@@ -41,7 +41,7 @@ public class Player {
 			layer2 = 1100;
 		}
 		else{
-			layer1 -= v;//слой уменьшается
+			layer1 -= v;
 			layer2 -= v;
 		}
 	

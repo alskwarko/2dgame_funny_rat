@@ -15,7 +15,7 @@ public class Main {
 		int y = screenSize.height / 2 - HEIGHT / 2;
 		
 		JFrame f = new JFrame("Funny rat");
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// закрытие окна при клике крестика и закрытие игры
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setBounds(x, y,WIDTH, HEIGHT);
         f.setIconImage(new ImageIcon("res/osn.jpg").getImage());
         f.add(new Road());
